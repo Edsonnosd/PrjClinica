@@ -14,6 +14,8 @@ import br.com.prjClinica.dal.ModuloConexao;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
+import java.text.DateFormat;
+import java.util.Date;
 
 public class TelaPaciente extends javax.swing.JInternalFrame {
     
@@ -30,42 +32,55 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
   
     }
        
-     private void adicionar() {
+    private void adicionar() {
                        
-        String sql = "insert into tbPaciente(nome,endereco,bairro,cep,cidade,estado,fone1,fone2,fax,celular,email,cpf,rg,dt_cadastro,obs,nome_resp,dt_nasc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into tbPaciente(cod_paciente, nome,endereco,bairro,cep,cidade,estado,fone1,fone2,fax,celular,email,cpf,rg,dt_cadastro,obs,nome_resp,dt_nasc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         
         try {
             pst = conexao.prepareStatement(sql);                           
             
-            pst.setString(1, txtPacNome.getText());
-            pst.setString(2, txtPacEndereco.getText());
-            pst.setString(3, txtPacBairro.getText());
-            pst.setString(4, txtPacCep.getText());
-            pst.setString(5, txtPacCidade.getText());
-            pst.setString(6, cboPacEstado.getSelectedItem().toString());
-            pst.setString(7, txtPacFone1.getText());
-            pst.setString(8, txtPacFone2.getText());
-            pst.setString(9, txtPacFax.getText());
-            pst.setString(10, txtPacCelular.getText());
-            pst.setString(11, txtPacEmail.getText());
-            pst.setString(12, txtPacCpf.getText());
-            pst.setString(13, txtPacRg.getText());
-            pst.setString(14, txtPacDtCadas.getText());
-            pst.setString(15, txtPacObs.getText());
-            pst.setString(16, txtPacResp.getText());
-            pst.setString(17, txtPacDtNasc.getText());
-                            
-            if ((txtPacNome.getText().isEmpty()) || (txtPacFone1.getText().isEmpty()) || (txtPacResp.getText().isEmpty()) || (txtPacEndereco.getText().isEmpty()) || (txtPacCidade.getText().isEmpty()) ||  (txtPacDtNasc.getText().isEmpty())) {
+            if(txtPacNome.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacNome.requestFocus();
+            }else if(txtPacResp.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacResp.requestFocus();
+            }else if(txtPacEndereco.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacEndereco.requestFocus();
+            }else if(txtPacCidade.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacCidade.requestFocus();
+                      
+                
             } else {
-
+                pst.setString(1, lblPacCodigo.getText());
+                pst.setString(2, txtPacNome.getText());
+                pst.setString(3, txtPacEndereco.getText());
+                pst.setString(4, txtPacBairro.getText());
+                pst.setString(5, txtPacCep.getText());
+                pst.setString(6, txtPacCidade.getText());
+                pst.setString(7, cboPacEstado.getSelectedItem().toString());
+                pst.setString(8, txtPacFone1.getText());
+                pst.setString(9, txtPacFone2.getText());
+                pst.setString(10, txtPacFax.getText());
+                pst.setString(11, txtPacCelular.getText());
+                pst.setString(12, txtPacEmail.getText());
+                pst.setString(13, txtPacCpf.getText());
+                pst.setString(14, txtPacRg.getText());
+                pst.setString(15, txtPacDtCadas.getText());
+                pst.setString(16, txtPacObs.getText());
+                pst.setString(17, txtPacResp.getText());
+                pst.setString(18, txtPacDtNasc.getText());
+                                
                 int adicionado = pst.executeUpdate();
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso!!");
-                   
+                    JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso!!");                   
                     limpar();
+                    txtPacNome.requestFocus();
                     
+                    btnPacUpdate.setEnabled(true);
                 }
             }
         } catch (Exception e) {
@@ -101,7 +116,8 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
     public void setar_campos() {
         
         //desabilita botão adicionar
-        btnPacCreate.setEnabled(false);
+        btnPacCreate.setEnabled(false);        
+        btnPacUpdate.setEnabled(true);
         
         int setar = tblPac.getSelectedRow(); 
         String escol = tblPac.getModel().getValueAt(setar, 0).toString();
@@ -135,6 +151,8 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                 txtPacObs.setText(rs.getString(17));
                 txtPacResp.setText(rs.getString(18));
                 txtPacDtNasc.setText(rs.getString(19));
+                
+                                
             } else {
                 
                 limpar();
@@ -148,7 +166,9 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
     
     
     private void alterar() {
+        
         String sql = "update tbpaciente set nome=?, endereco=?, bairro=?, cep=?, cidade=?, estado=?, fone1=?, fone2=?, fax=?, celular=?, email=?, cpf=?, rg=?, dt_cadastro=?, obs=?, nome_resp=?, dt_nasc=? where id_paciente=?";
+        
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(18, lblPacId.getText());
@@ -171,8 +191,20 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
             pst.setString(16, txtPacResp.getText());
             pst.setString(17, txtPacDtNasc.getText());
 
-            if ((txtPacNome.getText().isEmpty()) || (txtPacEndereco.getText().isEmpty()) || (txtPacCidade.getText().isEmpty()) ||(txtPacFone1.getText().isEmpty()) || (txtPacResp.getText().isEmpty()) ||  (txtPacDtNasc.getText().isEmpty())) {
+                            
+            if(txtPacNome.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacNome.requestFocus();
+            }else if(txtPacResp.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacResp.requestFocus();
+            }else if(txtPacEndereco.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacEndereco.requestFocus();
+            }else if(txtPacCidade.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos o campos obrigatórios!!");
+                txtPacCidade.requestFocus();
+                
             } else {
 
                 int adicionado = pst.executeUpdate();
@@ -192,7 +224,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         }
     }
     
-     private void remover(){
+    private void remover(){
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este paciente??","Atenção", JOptionPane.YES_NO_OPTION);
         if(confirma == JOptionPane.YES_NO_OPTION){
             String sql = "delete from tbpaciente where id_paciente=?";
@@ -224,14 +256,14 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         txtPacNome.setText(null);
         txtPacEndereco.setText(null);
         txtPacBairro.setText(null);
-        txtPacCep.requestFocus();
+        txtPacCep.setText(null);
         txtPacCidade.setText(null);
         txtPacFone1.setText(null);
         txtPacFone2.setText(null);
         txtPacFax.setText(null);
         txtPacCelular.setText(null);
         txtPacEmail.setText(null);
-        txtPacCpf.requestFocus();
+        txtPacCpf.setText(null);
         txtPacRg.setText(null);
         txtPacDtCadas.setText(null);
         txtPacObs.setText(null);
@@ -239,8 +271,54 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         txtPacDtNasc.setText(null);
         ((DefaultTableModel) tblPac.getModel()).setRowCount(0);
     }
- 
+   
+    private void codPaciente(){
+        
+        btnPacCreate.setEnabled(true);
+        
+        lblPacId.setText(null);
+        lblPacCodigo.setText(null);
+        txtPacCons.setText(null);
+        txtPacNome.setText(null);
+        txtPacEndereco.setText(null);
+        txtPacBairro.setText(null);
+        txtPacCep.setText(null);
+        txtPacCidade.setText(null);
+        txtPacFone1.setText(null);
+        txtPacFone2.setText(null);
+        txtPacFax.setText(null);
+        txtPacCelular.setText(null);
+        txtPacEmail.setText(null);
+        txtPacCpf.setText(null);
+        txtPacRg.setText(null);
+        txtPacObs.setText(null);
+        txtPacResp.setText(null);
+        txtPacDtNasc.setText(null);
+        ((DefaultTableModel) tblPac.getModel()).setRowCount(0);
+       
+        Date data = new Date();
+        DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
+        txtPacDtCadas.setText(formatador.format(data)); 
+        
+        String sql = "select (max(cod_paciente)+1) from tbpaciente";
+        
+        try {
 
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                lblPacCodigo.setText(rs.getString(1));
+                txtPacNome.requestFocus();
+                btnPacUpdate.setEnabled(false);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -268,9 +346,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         cboPacEstado = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        txtPacCpf = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtPacRg = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtPacFax = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -288,18 +364,20 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPac = new javax.swing.JTable();
         txtPacCons = new javax.swing.JTextField();
-        btnConsultar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtPacEmail = new javax.swing.JTextField();
-        txtPacDtNasc = new javax.swing.JTextField();
-        txtPacDtCadas = new javax.swing.JTextField();
-        txtPacCep = new javax.swing.JTextField();
-        txtPacFone1 = new javax.swing.JTextField();
-        txtPacFone2 = new javax.swing.JTextField();
-        txtPacCelular = new javax.swing.JTextField();
         lblPacId = new javax.swing.JLabel();
         lblPacCodigo = new javax.swing.JLabel();
+        btnPacNovo = new javax.swing.JButton();
+        txtPacFone1 = new javax.swing.JFormattedTextField();
+        txtPacFone2 = new javax.swing.JFormattedTextField();
+        txtPacCelular = new javax.swing.JFormattedTextField();
+        txtPacDtCadas = new javax.swing.JFormattedTextField();
+        txtPacDtNasc = new javax.swing.JFormattedTextField();
+        txtPacCep = new javax.swing.JFormattedTextField();
+        txtPacCpf = new javax.swing.JFormattedTextField();
+        txtPacRg = new javax.swing.JFormattedTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,7 +414,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         txtPacBairro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("* Telefone 01:");
+        jLabel5.setText("Telefone 01:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText(" Telefone 02:");
@@ -358,14 +436,10 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         cboPacEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "DF" }));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("CPF / CNPJ:");
-
-        txtPacCpf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("CPF:");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel12.setText("RG / Insc. Est.:");
-
-        txtPacRg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("RG:");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Fax:");
@@ -373,7 +447,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         txtPacFax.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel14.setText("* Dt. Nascimento:");
+        jLabel14.setText("Dt. Nascimento:");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("* Nome Responsável:");
@@ -385,6 +459,8 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
 
         btnPacCreate.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnPacCreate.setText("Adicionar");
+        btnPacCreate.setToolTipText("Adicionar");
+        btnPacCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPacCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPacCreateActionPerformed(evt);
@@ -451,28 +527,11 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnConsultar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnConsultar.setText("Consultar");
-        btnConsultar.setToolTipText("Consultar");
-        btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("ID Paciente:");
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("E-mail:");
-
-        txtPacDtNasc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtPacDtCadas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtPacCep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtPacFone1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtPacFone2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtPacCelular.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lblPacId.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblPacId.setAlignmentY(0.0F);
@@ -480,6 +539,71 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         lblPacCodigo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblPacCodigo.setForeground(new java.awt.Color(255, 0, 0));
         lblPacCodigo.setAlignmentY(0.0F);
+
+        btnPacNovo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnPacNovo.setText("Novo");
+        btnPacNovo.setToolTipText("Novo");
+        btnPacNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPacNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacNovoActionPerformed(evt);
+            }
+        });
+
+        try {
+            txtPacFone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ##### - ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacFone1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacFone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ##### - ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacFone2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ##### - ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacCelular.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacDtCadas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacDtCadas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacDtNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacDtNasc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##### - ###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacCep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.### - ##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtPacCpf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        try {
+            txtPacRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.### - #")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -524,10 +648,14 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtPacFax, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                            .addComponent(txtPacCelular, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPacFone1, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtPacFone2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtPacFone1, javax.swing.GroupLayout.Alignment.LEADING)))
+                                            .addComponent(txtPacCelular, javax.swing.GroupLayout.Alignment.LEADING)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel17)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtPacObs, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(130, 130, 130)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -541,52 +669,41 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel11)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtPacCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel16)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtPacDtCadas, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel16))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txtPacCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtPacDtCadas, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(jLabel8)
-                                                    .addGap(18, 18, 18)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                     .addComponent(txtPacCep, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(109, 109, 109)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel12)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel14))
+                                            .addGap(18, 18, 18)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
-                                                    .addGap(120, 120, 120)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel12)
-                                                        .addComponent(jLabel9))
-                                                    .addGap(18, 18, 18)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtPacCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtPacRg, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(104, 104, 104)
-                                                    .addComponent(jLabel14)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtPacDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
+                                                    .addComponent(txtPacDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(36, 36, 36)
                                                     .addComponent(jLabel22)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(txtPacEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel17)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtPacObs, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(txtPacEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtPacCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtPacRg, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(797, 797, 797)
                                                 .addComponent(jLabel1))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                        .addComponent(txtPacCons, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(26, 26, 26)
-                                                        .addComponent(btnConsultar)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                                                    .addComponent(txtPacCons))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel4)))
                                         .addGap(18, 18, 18)
@@ -597,6 +714,8 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                         .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPacNovo)
+                        .addGap(70, 70, 70)
                         .addComponent(btnPacCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
                         .addComponent(btnPacUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -604,15 +723,16 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                         .addComponent(btnPacDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPacCreate, btnPacDelete, btnPacNovo, btnPacUpdate});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPacCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPacCons, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel20)))
@@ -668,10 +788,10 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPacCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
-                            .addComponent(txtPacRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))))
+                            .addComponent(jLabel12)
+                            .addComponent(txtPacCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPacRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -688,9 +808,12 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPacCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPacUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPacDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPacDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPacNovo))
                 .addGap(28, 28, 28))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnPacCreate, btnPacDelete, btnPacNovo, btnPacUpdate});
 
         setBounds(0, 0, 1025, 648);
     }// </editor-fold>//GEN-END:initComponents
@@ -698,6 +821,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
     private void btnPacCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacCreateActionPerformed
         // TODO add your handling code here:
         adicionar();
+        //btnPacUpdate.setEnabled(true);
     }//GEN-LAST:event_btnPacCreateActionPerformed
 
     private void txtPacConsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPacConsKeyReleased
@@ -708,7 +832,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
     private void tblPacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacMouseClicked
         // clique que seleciona o nome na tabela
         setar_campos();
-        System.out.println(tblPac);
+        
     }//GEN-LAST:event_tblPacMouseClicked
 
     private void btnPacUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacUpdateActionPerformed
@@ -721,11 +845,16 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         remover();
     }//GEN-LAST:event_btnPacDeleteActionPerformed
 
+    private void btnPacNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacNovoActionPerformed
+        // TODO add your handling code here:        
+        codPaciente();
+    }//GEN-LAST:event_btnPacNovoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnPacCreate;
     private javax.swing.JButton btnPacDelete;
+    private javax.swing.JButton btnPacNovo;
     private javax.swing.JButton btnPacUpdate;
     private javax.swing.JComboBox<String> cboPacEstado;
     private javax.swing.JLabel jLabel1;
@@ -757,21 +886,21 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPacId;
     private javax.swing.JTable tblPac;
     private javax.swing.JTextField txtPacBairro;
-    private javax.swing.JTextField txtPacCelular;
-    private javax.swing.JTextField txtPacCep;
+    private javax.swing.JFormattedTextField txtPacCelular;
+    private javax.swing.JFormattedTextField txtPacCep;
     private javax.swing.JTextField txtPacCidade;
     public static javax.swing.JTextField txtPacCons;
-    private javax.swing.JTextField txtPacCpf;
-    public static javax.swing.JTextField txtPacDtCadas;
-    private javax.swing.JTextField txtPacDtNasc;
+    private javax.swing.JFormattedTextField txtPacCpf;
+    private javax.swing.JFormattedTextField txtPacDtCadas;
+    private javax.swing.JFormattedTextField txtPacDtNasc;
     private javax.swing.JTextField txtPacEmail;
     private javax.swing.JTextField txtPacEndereco;
     private javax.swing.JTextField txtPacFax;
-    private javax.swing.JTextField txtPacFone1;
-    private javax.swing.JTextField txtPacFone2;
+    private javax.swing.JFormattedTextField txtPacFone1;
+    private javax.swing.JFormattedTextField txtPacFone2;
     public static javax.swing.JTextField txtPacNome;
     private javax.swing.JTextField txtPacObs;
     private javax.swing.JTextField txtPacResp;
-    private javax.swing.JTextField txtPacRg;
+    private javax.swing.JFormattedTextField txtPacRg;
     // End of variables declaration//GEN-END:variables
 }

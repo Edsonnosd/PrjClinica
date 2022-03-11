@@ -5,16 +5,17 @@
  */
 package br.com.prjClinica.telas;
 
-
+import java.sql.*;
+import br.com.prjClinica.dal.ModuloConexao;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import java.sql.*;
-import br.com.prjClinica.dal.ModuloConexao;
-
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -32,6 +33,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         conexao = ModuloConexao.conector();
+        
     }
 
     /**
@@ -66,6 +68,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menRel = new javax.swing.JMenu();
         menRelPaci = new javax.swing.JMenuItem();
         menRelForn = new javax.swing.JMenuItem();
+        menRelUsu = new javax.swing.JMenuItem();
         menOpc = new javax.swing.JMenu();
         menOpcSair = new javax.swing.JMenuItem();
 
@@ -144,6 +147,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menConsUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
         menConsUsu.setText("Usuário");
+        menConsUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menConsUsuActionPerformed(evt);
+            }
+        });
         menCons.add(menConsUsu);
 
         Menu.add(menCons);
@@ -153,11 +161,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menRelPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         menRelPaci.setText("Pacientes");
+        menRelPaci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menRelPaciActionPerformed(evt);
+            }
+        });
         menRel.add(menRelPaci);
 
         menRelForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
         menRelForn.setText("Fornecedores");
+        menRelForn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menRelFornActionPerformed(evt);
+            }
+        });
         menRel.add(menRelForn);
+
+        menRelUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        menRelUsu.setText("Usuário");
+        menRelUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menRelUsuActionPerformed(evt);
+            }
+        });
+        menRel.add(menRelUsu);
 
         Menu.add(menRel);
 
@@ -238,28 +265,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaPaciente paciente = new TelaPaciente();
         paciente.setVisible(true);
         desktop.add(paciente);
-       // paciente.txtPacCons.requestFocus();
-        Date data = new Date();
-        DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
-        paciente.txtPacDtCadas.setText(formatador.format(data)); 
-        
-        /*
-        String codigo = "select cod_paciente from tbpaciente";
-        try {
-            pst = conexao.prepareStatement(codigo);
-            //filtra a pesquisa no bando
-            pst.setInt(1,1);         
-            rs = pst.executeQuery();
-            System.out.println(rs);
-            
-            if(paciente.txtPacNome.getText().isEmpty()){
-                paciente.lblPacCodigo.setText(rs.getString(1));
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        */
+      
     }//GEN-LAST:event_menCadPaciActionPerformed
 
     private void menCadFornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadFornActionPerformed
@@ -268,6 +274,64 @@ public class TelaPrincipal extends javax.swing.JFrame {
         fornecedor.setVisible(true);
         desktop.add(fornecedor);
     }//GEN-LAST:event_menCadFornActionPerformed
+
+    private void menConsUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menConsUsuActionPerformed
+        // TODO add your handling code here:
+        TelaConsUsu consUsuario = new TelaConsUsu();
+        consUsuario.setVisible(true);
+        desktop.add(consUsuario);
+    }//GEN-LAST:event_menConsUsuActionPerformed
+
+    private void menRelUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menRelUsuActionPerformed
+        // TODO add your handling code here:
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção!!", JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            //imprimi o relatorio
+            try {
+                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\clinicaUsuario.jasper", null, conexao);
+                
+            //exibe realtorio pela classe jasperViewer
+            JasperViewer.viewReport(print, false);
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_menRelUsuActionPerformed
+
+    private void menRelFornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menRelFornActionPerformed
+        // TODO add your handling code here:
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção!!", JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            //imprimi o relatorio
+            try {
+                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\ClinicaRelForn.jasper", null, conexao);
+                
+            //exibe realtorio pela classe jasperViewer
+            JasperViewer.viewReport(print, false);
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_menRelFornActionPerformed
+
+    private void menRelPaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menRelPaciActionPerformed
+        // TODO add your handling code here:
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção!!", JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            //imprimi o relatorio
+            try {
+                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\ClinicaRelPac.jasper", null, conexao);
+                
+            //exibe realtorio pela classe jasperViewer
+            JasperViewer.viewReport(print, false);
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_menRelPaciActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +370,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JDesktopPane desktop;
+    public static javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblData;
     public static javax.swing.JLabel lblUsuario;
@@ -323,5 +387,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu menRel;
     private javax.swing.JMenuItem menRelForn;
     private javax.swing.JMenuItem menRelPaci;
+    private javax.swing.JMenuItem menRelUsu;
     // End of variables declaration//GEN-END:variables
 }
