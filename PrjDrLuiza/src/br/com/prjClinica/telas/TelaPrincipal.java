@@ -139,6 +139,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menConsPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menConsPaci.setText("Paciente");
+        menConsPaci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menConsPaciActionPerformed(evt);
+            }
+        });
         menCons.add(menConsPaci);
 
         menConsForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
@@ -332,6 +337,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_menRelPaciActionPerformed
+
+    private void menConsPaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menConsPaciActionPerformed
+        // TODO add your handling code here:
+        TelaConsPac consPac = new TelaConsPac();
+        consPac.setVisible(true);
+        desktop.add(consPac);
+        
+    }//GEN-LAST:event_menConsPaciActionPerformed
 
     /**
      * @param args the command line arguments
