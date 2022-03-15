@@ -7,6 +7,9 @@
         <Menu class="javax.swing.JMenu" name="menCad">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro    "/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
@@ -21,6 +24,9 @@
                   <KeyStroke key="Alt+P"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Paciente"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menCadPaciActionPerformed"/>
@@ -32,6 +38,9 @@
                   <KeyStroke key="Alt+F"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Fornecedor"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menCadFornActionPerformed"/>
@@ -43,6 +52,9 @@
                   <KeyStroke key="Alt+U"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menCadUsuActionPerformed"/>
@@ -53,6 +65,9 @@
         <Menu class="javax.swing.JMenu" name="menCons">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consulta  "/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
@@ -67,6 +82,9 @@
                   <KeyStroke key="Alt+C"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Paciente"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menConsPaciActionPerformed"/>
@@ -78,7 +96,13 @@
                   <KeyStroke key="Alt+N"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Fornecedores"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menConsFornActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menConsUsu">
               <Properties>
@@ -86,9 +110,26 @@
                   <KeyStroke key="Alt+R"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menConsUsuActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menConsListaFone">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+L"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Lista Telefone"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menConsListaFoneActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -96,6 +137,9 @@
         <Menu class="javax.swing.JMenu" name="menRel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rio   "/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
@@ -110,6 +154,9 @@
                   <KeyStroke key="Alt+A"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pacientes"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menRelPaciActionPerformed"/>
@@ -121,6 +168,9 @@
                   <KeyStroke key="Alt+O"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Fornecedores"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menRelFornActionPerformed"/>
@@ -132,9 +182,26 @@
                   <KeyStroke key="Alt+S"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menRelUsuActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menRelListaFone">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+I"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Lista Telefone"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menRelListaFoneActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -142,6 +209,9 @@
         <Menu class="javax.swing.JMenu" name="menOpc">
           <Properties>
             <Property name="text" type="java.lang.String" value="Op&#xe7;&#xf5;es"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor em Forma de M&#xe3;o"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
@@ -153,6 +223,9 @@
                   <KeyStroke key="Alt+F4"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menOpcSairActionPerformed"/>

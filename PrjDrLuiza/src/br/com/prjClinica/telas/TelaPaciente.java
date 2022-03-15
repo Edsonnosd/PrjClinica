@@ -91,7 +91,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
      // consulta por nome
     private void pesquisar_paciente(){
                     
-        String sql = "select id_paciente as ID, cod_paciente as Código, nome as Nome from tbpaciente where nome like ?";
+        String sql = "select id_paciente as ID, cod_paciente as Código, nome as Nome from (select * from tbpaciente where nome like ?) tbpaciente order by nome";
                
         try {
             pst = conexao.prepareStatement(sql);
@@ -400,7 +400,8 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Cadastro Paciente");
+        setTitle("Cadastro de Paciente");
+        setFont(new java.awt.Font("Agency FB", 1, 10)); // NOI18N
         setPreferredSize(new java.awt.Dimension(1025, 648));
 
         btnPacCreate.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -416,6 +417,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
         btnPacUpdate.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnPacUpdate.setText("Alterar");
         btnPacUpdate.setToolTipText("");
+        btnPacUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPacUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPacUpdateActionPerformed(evt);
@@ -424,6 +426,7 @@ public class TelaPaciente extends javax.swing.JInternalFrame {
 
         btnPacDelete.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnPacDelete.setText("Remover");
+        btnPacDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPacDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPacDeleteActionPerformed(evt);

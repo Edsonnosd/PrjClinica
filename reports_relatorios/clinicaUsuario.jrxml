@@ -29,7 +29,7 @@
 			<staticText>
 				<reportElement x="12" y="0" width="173" height="26" uuid="8aca684f-ddd3-4f4a-9b30-7dc29aa54d8b"/>
 				<textElement>
-					<font size="16"/>
+					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Usuários Cadastrados]]></text>
 			</staticText>
@@ -106,12 +106,12 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="5" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<textField>
-				<reportElement x="455" y="34" width="100" height="20" uuid="337af0fd-4de0-44c4-9485-6f5a7a52a838"/>
+				<reportElement x="455" y="15" width="100" height="20" uuid="337af0fd-4de0-44c4-9485-6f5a7a52a838"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>

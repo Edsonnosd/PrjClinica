@@ -65,10 +65,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menConsPaci = new javax.swing.JMenuItem();
         menConsForn = new javax.swing.JMenuItem();
         menConsUsu = new javax.swing.JMenuItem();
+        menConsListaFone = new javax.swing.JMenuItem();
         menRel = new javax.swing.JMenu();
         menRelPaci = new javax.swing.JMenuItem();
         menRelForn = new javax.swing.JMenuItem();
         menRelUsu = new javax.swing.JMenuItem();
+        menRelListaFone = new javax.swing.JMenuItem();
         menOpc = new javax.swing.JMenu();
         menOpcSair = new javax.swing.JMenuItem();
 
@@ -103,10 +105,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblData.setText("Data");
 
         menCad.setText("Cadastro    ");
+        menCad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menCadPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         menCadPaci.setText("Paciente");
+        menCadPaci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCadPaci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menCadPaciActionPerformed(evt);
@@ -116,6 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menCadForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
         menCadForn.setText("Fornecedor");
+        menCadForn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCadForn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menCadFornActionPerformed(evt);
@@ -125,6 +130,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menCadUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         menCadUsu.setText("Usuário");
+        menCadUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCadUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menCadUsuActionPerformed(evt);
@@ -135,10 +141,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Menu.add(menCad);
 
         menCons.setText("Consulta  ");
+        menCons.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCons.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menConsPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menConsPaci.setText("Paciente");
+        menConsPaci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menConsPaci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menConsPaciActionPerformed(evt);
@@ -148,10 +156,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menConsForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
         menConsForn.setText("Fornecedores");
+        menConsForn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menConsForn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menConsFornActionPerformed(evt);
+            }
+        });
         menCons.add(menConsForn);
 
         menConsUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
         menConsUsu.setText("Usuário");
+        menConsUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menConsUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menConsUsuActionPerformed(evt);
@@ -159,13 +174,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menCons.add(menConsUsu);
 
+        menConsListaFone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
+        menConsListaFone.setText("Lista Telefone");
+        menConsListaFone.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menConsListaFone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menConsListaFoneActionPerformed(evt);
+            }
+        });
+        menCons.add(menConsListaFone);
+
         Menu.add(menCons);
 
         menRel.setText("Relatório   ");
+        menRel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menRelPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         menRelPaci.setText("Pacientes");
+        menRelPaci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelPaci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menRelPaciActionPerformed(evt);
@@ -175,6 +202,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menRelForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
         menRelForn.setText("Fornecedores");
+        menRelForn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelForn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menRelFornActionPerformed(evt);
@@ -184,6 +212,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menRelUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         menRelUsu.setText("Usuário");
+        menRelUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menRelUsuActionPerformed(evt);
@@ -191,13 +220,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menRel.add(menRelUsu);
 
+        menRelListaFone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
+        menRelListaFone.setText("Lista Telefone");
+        menRelListaFone.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menRelListaFone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menRelListaFoneActionPerformed(evt);
+            }
+        });
+        menRel.add(menRelListaFone);
+
         Menu.add(menRel);
 
         menOpc.setText("Opções");
+        menOpc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menOpc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menOpcSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         menOpcSair.setText("Sair");
+        menOpcSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menOpcSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menOpcSairActionPerformed(evt);
@@ -346,6 +387,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menConsPaciActionPerformed
 
+    private void menConsFornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menConsFornActionPerformed
+        // TODO add your handling code here:
+        TelaConsForn consForn = new TelaConsForn();
+        consForn.setVisible(true);
+        desktop.add(consForn);
+    }//GEN-LAST:event_menConsFornActionPerformed
+
+    private void menConsListaFoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menConsListaFoneActionPerformed
+        // TODO add your handling code here:
+        TelaListaFone listaFone = new TelaListaFone();
+        listaFone.setVisible(true);
+        desktop.add(listaFone);
+    }//GEN-LAST:event_menConsListaFoneActionPerformed
+
+    private void menRelListaFoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menRelListaFoneActionPerformed
+        // TODO add your handling code here:                                                        
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão deste relatório?", "Atenção!!", JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            //imprimi o relatorio
+            try {
+                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\clinicaRelListaFone.jasper", null, conexao);
+                
+            //exibe realtorio pela classe jasperViewer
+            JasperViewer.viewReport(print, false);
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    
+    }//GEN-LAST:event_menRelListaFoneActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -393,12 +466,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menCadUsu;
     public static javax.swing.JMenu menCons;
     private javax.swing.JMenuItem menConsForn;
+    private javax.swing.JMenuItem menConsListaFone;
     private javax.swing.JMenuItem menConsPaci;
     private javax.swing.JMenuItem menConsUsu;
     private javax.swing.JMenu menOpc;
     private javax.swing.JMenuItem menOpcSair;
     public static javax.swing.JMenu menRel;
     private javax.swing.JMenuItem menRelForn;
+    private javax.swing.JMenuItem menRelListaFone;
     private javax.swing.JMenuItem menRelPaci;
     private javax.swing.JMenuItem menRelUsu;
     // End of variables declaration//GEN-END:variables

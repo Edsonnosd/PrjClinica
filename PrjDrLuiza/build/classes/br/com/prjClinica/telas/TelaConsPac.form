@@ -28,7 +28,7 @@
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Consulta de Paciente"/>
+    <Property name="title" type="java.lang.String" value="Consulta de Pacientes"/>
     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
       <Font name="Agency FB" size="10" style="1"/>
     </Property>
@@ -439,9 +439,9 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtConsPacCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtConsPacCelular" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">

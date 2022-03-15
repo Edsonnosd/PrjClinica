@@ -40,7 +40,7 @@ public class TelaConsPac extends javax.swing.JInternalFrame {
      // consulta por nome
     private void pesquisar_paciente(){
                     
-        String sql = "select id_paciente as ID, cod_paciente as Código, nome as Nome from tbpaciente where nome like ?";
+        String sql = "select id_paciente as ID, cod_paciente as Código, nome as Nome from (select * from tbpaciente where nome like ?) tbpaciente order by nome";
                
         try {
             pst = conexao.prepareStatement(sql);
@@ -235,7 +235,7 @@ public class TelaConsPac extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Consulta de Paciente");
+        setTitle("Consulta de Pacientes");
         setFont(new java.awt.Font("Agency FB", 1, 10)); // NOI18N
         setPreferredSize(new java.awt.Dimension(1025, 648));
 
@@ -440,9 +440,9 @@ public class TelaConsPac extends javax.swing.JInternalFrame {
                     .addComponent(txtConsPacFone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtConsPacCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(txtConsPacCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)

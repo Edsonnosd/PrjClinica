@@ -37,7 +37,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
      // consulta por nome
     private void pesquisarConsUsu(){
                     
-        String sql = "select id_usuario as ID, usuario as Usuário , fone as Fone, login as Login from tbusuario where usuario like ?";
+        String sql = "select id_usuario as ID, usuario as Usuário , fone as Fone, login as Login from (select * from tbusuario where usuario like ?) tbusuario order by usuario";
                
         try {
             pst = conexao.prepareStatement(sql);
