@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clinicaRelListaFone" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d695745-51fc-4f44-804f-2833e48fb74c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select cod_paciente, nome, fone1, fone2, celular, fax from tbpaciente order by nome;]]>
+	</queryString>
+	<field name="cod_paciente" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fone1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fone2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="celular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fax" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="292" height="26" uuid="1571baa0-5865-4497-ad05-ab5df72f41a7"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Telefones dos Pacientes]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="445" y="6" width="100" height="20" uuid="44bb70be-c6c6-4c75-a078-b17bdb22d8df"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="5" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="479" y="0" width="66" height="20" uuid="34a2da9d-3833-4e1a-9b5d-fad695ee55f7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="59" height="20" uuid="aecc6dad-1b1c-4fc3-b7cf-5600b2f15c7d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="0" width="65" height="20" uuid="485bdbb3-3a8b-4c41-b562-b1a74c3507ca"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fone 02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="0" width="67" height="20" uuid="bda64828-f457-4ff0-afbf-c3373337e0d6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fone 01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="20" uuid="e6306e1d-d579-4ce6-9b47-c8a0e624d58b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="100" height="20" uuid="9d6064de-158b-4b6c-8320-a6427c9a0395"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="479" y="0" width="76" height="20" uuid="ef4b2db4-729e-4640-807a-816401705579"/>
+				<textFieldExpression><![CDATA[$F{fax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="79" height="20" uuid="c47b0c77-dd77-4286-85b0-fafb0b9ea2f7"/>
+				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="84" height="20" uuid="07cf3238-1338-421c-a9e3-4ecf7b769a68"/>
+				<textFieldExpression><![CDATA[$F{fone2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="0" width="82" height="20" uuid="f19f7f38-09f7-461a-8fbb-c9aee87c8419"/>
+				<textFieldExpression><![CDATA[$F{fone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="45" height="20" uuid="5c8f8dd9-5552-4e07-9ff0-39e3d00cdd34"/>
+				<textFieldExpression><![CDATA[$F{cod_paciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="100" height="20" uuid="f51a40fc-efb1-411e-8446-7f5c1201cc3e"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="10" width="100" height="20" uuid="3eb0a807-8fa1-4961-9949-eeceae4407de"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

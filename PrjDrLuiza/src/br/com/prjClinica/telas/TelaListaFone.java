@@ -104,7 +104,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\clinicaListaFone.jasper", filtro, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\clinicaListaFone.jasper", filtro, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -126,7 +126,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\listaFoneLetra.jasper", filtro, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\listaFoneLetra.jasper", filtro, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -169,14 +169,14 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Paciente Selecionado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        txtListaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtListaNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
 
-        txtListaCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtListaCod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Código:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -184,14 +184,14 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtListaCod, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(txtListaNome, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addComponent(txtListaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,7 +228,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Campo de pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        txtListaConsPac.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtListaConsPac.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtListaConsPac.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtListaConsPacKeyReleased(evt);
@@ -240,7 +240,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
                 return false;
             }
         };
-        tblListaPac.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        tblListaPac.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         tblListaPac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -266,7 +266,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtListaConsPac)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -275,7 +275,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(txtListaConsPac, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
         );
 
         btnListaSelec.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -290,19 +290,21 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addGap(0, 183, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnListaPacLimpar)
                         .addGap(85, 85, 85)
                         .addComponent(btnListaSelec)
                         .addGap(74, 74, 74)
                         .addComponent(btnListaPac)
-                        .addGap(50, 50, 50)))
-                .addGap(107, 107, 107))
+                        .addGap(50, 50, 50))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(164, 164, 164))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnListaPacLimpar, btnListaSelec});
@@ -324,7 +326,7 @@ public class TelaListaFone extends javax.swing.JInternalFrame {
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnListaPac, btnListaPacLimpar, btnListaSelec});
 
-        setBounds(0, 0, 900, 590);
+        setBounds(0, 0, 1025, 590);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtListaConsPacKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtListaConsPacKeyReleased

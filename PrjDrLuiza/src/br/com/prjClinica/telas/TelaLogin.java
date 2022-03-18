@@ -19,9 +19,10 @@ public class TelaLogin extends javax.swing.JFrame {
     
     Connection conexao = null;
     PreparedStatement pst = null;
-    ResultSet rs = null;
-    
+    ResultSet rs = null;   
+       
     public void logar(){
+                       
         String sql = "select * from tbusuario where login =? and senha =?";
         try {
             //as linhas abaixo preparam a consulta ao banco  em funcao das caixas de texto

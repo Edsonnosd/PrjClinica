@@ -37,7 +37,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
      // consulta por nome
     private void pesquisarConsUsu(){
                     
-        String sql = "select id_usuario as ID, usuario as Usuário , fone as Fone, login as Login from (select * from tbusuario where usuario like ?) tbusuario order by usuario";
+        String sql = "select usuario as Usuário from (select * from tbusuario where usuario like ?) tbusuario order by usuario";
                
         try {
             pst = conexao.prepareStatement(sql);
@@ -65,7 +65,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
         String escol = tblConsUsu.getModel().getValueAt(setar, 0).toString();
         //System.out.println(escol);
         
-        String sql = "select * from tbusuario where id_usuario=?";
+        String sql = "select * from tbusuario where usuario=?";
         
         try {
             pst = conexao.prepareStatement(sql);
@@ -111,7 +111,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\clinicaConsUsu.jasper", filtro, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\clinicaConsUsu.jasper", filtro, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -160,17 +160,17 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Usuários Cadastrados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("ID:");
 
-        txtConsId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtConsId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        txtConsUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtConsUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Telefone:");
 
         try {
@@ -178,15 +178,16 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtConsFone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Login:");
 
-        txtConsLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtConsLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        txtConsSenha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtConsSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Senha:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -269,7 +270,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Campo de pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        txtConsUsu.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtConsUsu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtConsUsu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtConsUsuKeyReleased(evt);
@@ -281,7 +282,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
                 return false;
             }
         };
-        tblConsUsu.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        tblConsUsu.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         tblConsUsu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -324,7 +325,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnConsLimpar)
@@ -348,7 +349,7 @@ public class TelaConsUsu extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsLimpar)
                     .addComponent(btnConsUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnConsLimpar, btnConsUsu});

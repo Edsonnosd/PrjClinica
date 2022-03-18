@@ -83,20 +83,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        desktop.setPreferredSize(new java.awt.Dimension(1000, 350));
+        desktop.setPreferredSize(new java.awt.Dimension(1025, 648));
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1025, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/prjClinica/icones/clinica1.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/prjClinica/icones/CLINICA-INFANTIL200.png"))); // NOI18N
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblUsuario.setText("Usuário");
@@ -109,6 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menCadPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        menCadPaci.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menCadPaci.setText("Paciente");
         menCadPaci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCadPaci.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCad.add(menCadPaci);
 
         menCadForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
+        menCadForn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menCadForn.setText("Fornecedor");
         menCadForn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCadForn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCad.add(menCadForn);
 
         menCadUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
+        menCadUsu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menCadUsu.setText("Usuário");
         menCadUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menCadUsu.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +148,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCons.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menConsPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menConsPaci.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menConsPaci.setText("Paciente");
         menConsPaci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menConsPaci.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +159,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCons.add(menConsPaci);
 
         menConsForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
+        menConsForn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menConsForn.setText("Fornecedores");
         menConsForn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menConsForn.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +170,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCons.add(menConsForn);
 
         menConsUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        menConsUsu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menConsUsu.setText("Usuário");
         menConsUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menConsUsu.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +181,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCons.add(menConsUsu);
 
         menConsListaFone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
+        menConsListaFone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menConsListaFone.setText("Lista Telefone");
         menConsListaFone.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menConsListaFone.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +198,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menRel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menRelPaci.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        menRelPaci.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menRelPaci.setText("Pacientes");
         menRelPaci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelPaci.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +209,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menRel.add(menRelPaci);
 
         menRelForn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
+        menRelForn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menRelForn.setText("Fornecedores");
         menRelForn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelForn.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +220,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menRel.add(menRelForn);
 
         menRelUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        menRelUsu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menRelUsu.setText("Usuário");
         menRelUsu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelUsu.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +231,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menRel.add(menRelUsu);
 
         menRelListaFone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
+        menRelListaFone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menRelListaFone.setText("Lista Telefone");
         menRelListaFone.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menRelListaFone.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +248,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menOpc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         menOpcSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        menOpcSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menOpcSair.setText("Sair");
         menOpcSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menOpcSair.addActionListener(new java.awt.event.ActionListener() {
@@ -255,30 +267,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 1025, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addComponent(lblData)
-                    .addComponent(lblUsuario))
-                .addGap(39, 39, 39))
+                    .addComponent(lblUsuario)
+                    .addComponent(jLabel2))
+                .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(31, 31, 31)
+                .addGap(38, 38, 38)
                 .addComponent(lblUsuario)
                 .addGap(55, 55, 55)
                 .addComponent(lblData)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1250, 720));
+        setSize(new java.awt.Dimension(1266, 720));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -311,6 +321,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaPaciente paciente = new TelaPaciente();
         paciente.setVisible(true);
         desktop.add(paciente);
+        
+        Date data = new Date();
+        DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
+        paciente.txtPacDtCadas.setText(formatador.format(data));
       
     }//GEN-LAST:event_menCadPaciActionPerformed
 
@@ -334,7 +348,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\clinicaUsuario.jasper", null, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\clinicaUsuario.jasper", null, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -351,7 +365,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\ClinicaRelForn.jasper", null, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\ClinicaRelForn.jasper", null, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -368,7 +382,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\ClinicaRelPac.jasper", null, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\clinicaRelPac.jasper", null, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -407,7 +421,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(confirma == JOptionPane.YES_OPTION){
             //imprimi o relatorio
             try {
-                JasperPrint print = JasperFillManager.fillReport("C:\\ProjetoDrLuiza\\reports_relatorios\\clinicaRelListaFone.jasper", null, conexao);
+                JasperPrint print = JasperFillManager.fillReport("\\ProjetoDrLuiza\\PrjDrLuiza\\src\\reports\\clinicaRelListaFone.jasper", null, conexao);
                 
             //exibe realtorio pela classe jasperViewer
             JasperViewer.viewReport(print, false);
@@ -419,6 +433,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     }//GEN-LAST:event_menRelListaFoneActionPerformed
 
+    
+    
+    
     /**
      * @param args the command line arguments
      */
